@@ -4,6 +4,7 @@ While (enquanto)
 Executa uma ação enquanto uma condição for verdadeira
 Cuidado com o loop infinito!
 """
+
 # ------------------------
 # Exemplo de loop infinito
 # condicao = True
@@ -20,15 +21,18 @@ Cuidado com o loop infinito!
 #     nome = input('Qual o seu nome: ')
 #     print(f'Seu nome é {nome}')
 
-# print(123) # Esse print nunca será executado nessa sequencia, já que o while acima está em um loop infinito
+# Esse print nunca será executado nessa sequencia,
+# já que o while acima está em um loop infinito
+# print(123)
 
 # condicao = True
 
 # while condicao:
 #     entrada = input('Deseja entrar no sistema?')
 #     entrar = entrada == 'sim' or entrada == 'Sim'
-#     sair = entrada == 'não' or entrada == 'Não' or entrada == 'nao' or entrada == 'nao'
-    
+#     sair = entrada == 'não' or entrada == 'Não' or
+#       entrada == 'nao' or entrada == 'nao'
+
 #     if entrar:
 #         print('Você entrou no sistema.')
 #         break
@@ -37,7 +41,7 @@ Cuidado com o loop infinito!
 #         break
 #     else:
 #         print('Resposta inválida, tente novamente.')
-        
+
 # condicao1 = True
 
 # while condicao1:
@@ -56,11 +60,12 @@ contador = 0
 
 while contador < 10:
     contador = contador + 1
-    
+
     if contador == 4:
         print('Pularemos o 4.')
-        continue # pula todo o restante dessa repetição do loop e inicia a próxima
-    
+        # pula todo o restante dessa repetição do loop e inicia a próxima
+        continue
+
     print(contador)
 
 print('Fim da contagem.')

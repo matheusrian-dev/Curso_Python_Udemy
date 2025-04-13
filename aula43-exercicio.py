@@ -5,6 +5,7 @@ Exiba os índices da lista
 1 - Geovana
 2 - Marina
 """
+
 # Minha solução
 lista = ['Karen', 'Geovana', 'Marina']
 indice = 0
@@ -15,5 +16,6 @@ for nome in lista:
 # lista = ['Karen', 'Geovana', 'Marina']
 # indices = range(len(lista)) # retorna o tamanho da lista
 
+# retorna o índice, o valor incluido naquele indice e o tipo do valor
 # for indice in indices:
-#     print(indice, lista[indice], type(lista[indice])) # retorna o índice, o valor incluido naquele indice e o tipo do valor
+#     print(indice, lista[indice], type(lista[indice]))

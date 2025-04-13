@@ -5,6 +5,7 @@ Strings são iteráveis
  M  a  t  h  e  u  s
 -7 -6 -5 -4 -3 -2 -1
 '''
+
 nome = input('Digite seu nome: ')
 encontrar = input('Digite o que deseja encontrar: ')
 # print(nome[1])
@@ -13,7 +14,7 @@ encontrar = input('Digite o que deseja encontrar: ')
 # print('v' in nome)
 # print('Mat' in nome)
 # print('amt' not in nome)
-if encontrar in nome :
+if encontrar in nome:
     print(f'{encontrar} está em {nome}')
 else:
     print(f'{encontrar} não está em {nome}')

@@ -1,15 +1,22 @@
 """
 enumerate - enumera iteráveis (índices)
 """
+
 lista = ['Karen', 'Geovana', 'Marina']
 
 lista_enumerada = enumerate(lista)
-# print(lista_enumerada) # tentar exibir um enumerate de forma direta irá retornar o objeto em si e não os valores referenciados
+# tentar exibir um enumerate de forma direta irá retornar o objeto em si e
+# não os valores referenciados
+# print(lista_enumerada)
 
-#print(list(lista_enumerada)) # É possível exibir ao converter o enumerate para lista ou tupla
+# É possível exibir ao converter o enumerate para lista ou tupla
+# print(list(lista_enumerada))
 
+# Outro método de exibir os itens do enumerate
 for indice, item in lista_enumerada:
-     print(indice, item) # Outro método de exibir os itens do enumerate
+    print(indice, item)
 
+# Por algum motivo, o python continua os 'for's subsequentes da onde o outro
+# parou, sendo assim ele não exibirá mais nada.
 # for item in lista_enumerada:
-#     print(item) # Por algum motivo, o python continua os 'for's subsequentes da onde o outro parou, sendo assim ele não exibirá mais nada.
+#     print(item)

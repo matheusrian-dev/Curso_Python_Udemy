@@ -1,4 +1,4 @@
-#Exercício básico - print e cálculos matemáticos
+# Exercício básico - print e cálculos matemáticos
 nome = 'Matheus'
 sobrenome = 'Rian'
 idade = 25

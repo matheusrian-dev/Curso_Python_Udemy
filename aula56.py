@@ -13,13 +13,20 @@ Por padrão, funções Python retornam None (nada).
 #     print('Linha3')
 #     print('Linha4')
 
-def imprimir(a, b, c): # parâmetros são as variáveis que são passados no parentese da função que serão utilizados no código dentro dela
+
+def imprimir(a, b, c):
+    # parâmetros são as variáveis que são passados no parentese
+    # da função que serão utilizados no código dentro dela
     print(a, b, c)
 
-imprimir(1, 2, 3) # argumentos são os valores que alimentam os parâmetros da função
+
+# argumentos são os valores que alimentam os parâmetros da função
+imprimir(1, 2, 3)
 imprimir(3, 4, 5)
+
 
 def saudacao(nome):
     print(f'Olá {nome}')
-    
+
+
 saudacao('Luna')

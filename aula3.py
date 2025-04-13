@@ -1,4 +1,4 @@
-#Cálculo do IMC - peso / (altura x altura)
+# Cálculo do IMC - peso / (altura x altura)
 nome = 'Matheus Rian'
 altura = 1.73
 peso = 76

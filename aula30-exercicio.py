@@ -1,6 +1,7 @@
 """
 Exercício - Calculadora com while
 """
+
 """ Calculadora com while """
 while True:
     numero_1 = input('Digite um número: ')
@@ -13,7 +14,7 @@ while True:
         num_1_float = float(numero_1)
         num_2_float = float(numero_2)
         numeros_validos = True
-    except:
+    except ValueError:
         numeros_validos = None
 
     if numeros_validos is None:

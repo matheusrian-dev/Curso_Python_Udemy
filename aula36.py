@@ -1,4 +1,4 @@
-#Mostrando que os comandos do while também funciona no for
+# Mostrando que os comandos do while também funciona no for
 for i in range(10):
     if i == 2:
         print('i é 2, pulando...')
@@ -6,7 +6,7 @@ for i in range(10):
     if i == 8:
         print('i é 8, seu else não executará')
         break
-    for j in range (1,3):
+    for j in range(1, 3):
         print(i, j)
 else:
     print('For completo com sucesso!')

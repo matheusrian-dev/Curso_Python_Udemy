@@ -1,4 +1,4 @@
-''' 
+'''
 Operador lógico 'not'
 
 Usado para inverter expressões

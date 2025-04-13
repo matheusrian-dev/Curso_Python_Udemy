@@ -9,7 +9,7 @@ Ex.:  746.824.890-70 (746824890)
    10  9  8  7  6  5  4  3  2
    7   4  6  8  2  4  8  9  0
    70  36 48 56 12 20 32 27 0
-   
+
 Somar todos os resultados:
 70+36+48+56+12+20+3+27+0 = 301
 Multiplicar o resultado anterior por 10
@@ -20,10 +20,11 @@ Se o resultado anterior for maior que 9:
     resultado é 0
 contrário disso:
     resultado é o valor da conta
-    
+
     O primeiro dígito do CPF é 7
-    
+
 """
+
 # Minha solução
 print('Sistema para Validação de CPF')
 cpf = input('Insira um CPF (Apenas números):')
@@ -32,7 +33,7 @@ j = 0
 somacpf = 0
 try:
     while i >= 2:
-        digitoatual = int(cpf[j]) 
+        digitoatual = int(cpf[j])
         somacpf += digitoatual * i
         i -= 1
         j += 1
@@ -44,10 +45,9 @@ try:
 except ValueError:
     print('Digite um CPF válido (apenas números)')
 except IndexError:
-    print('Quantidade de números inseridos não coincide com as de um CPF válido.')
-except:
-    print('Erro desconhecido, contate o administrador.')
-
+    print(
+        'Quantidade de números inseridos não coincide com as de um CPF válido.'
+    )
 # Solução do Instrutor
 # cpf = '74682489070'
 # nove_digitos = cpf[:9]

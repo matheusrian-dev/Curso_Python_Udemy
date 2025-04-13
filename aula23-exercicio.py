@@ -3,6 +3,7 @@ Faça um programa que pergunte a hora ao usuário e, baseando-se no horário
 descrito, exiba a saudação apropriada. Exemplo:
 Bom dia: 0 às 11, Boa tarde: 12 às 17 e Boa noite: 18 às 23
 """
+
 horario = input('Digite a hora em número inteiro: ')
 try:
     horario_int = int(horario)
@@ -17,5 +18,5 @@ try:
         print('Boa noite')
     else:
         print('Hora inválida')
-except:
+except ValueError:
     print('Hora inválida')
