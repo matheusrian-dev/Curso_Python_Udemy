@@ -30,7 +30,8 @@ tem_caractere_especial = False
 perguntar = True
 
 
-def valida_numero(numero):  # valida se o valor passado é um numero
+# valida se o valor passado é um numero
+def valida_numero(numero):
     try:
         numero = int(numero)
     except ValueError:
@@ -42,34 +43,36 @@ def valida_numero(numero):  # valida se o valor passado é um numero
     return True
 
 
-def repetir_programa():  # verifica se vai continuar o loop do programa
+# verifica se vai continuar o loop do programa
+def repetir_programa():
     resposta_enviada = input(
         "Gostaria de finalizar o programa? Digite sim para sair e digite "
         + "qualquer outra coisa para reiniciar: "
     )
-    return resposta_enviada.lower() != "sim"  # True = continua, False = sai
+    # True = continua, False = sai
+    return resposta_enviada.lower() != "sim"
 
 
+# gera o valor booleano nas perguntas para fazer o checkin das
+# especificações da senha do usuário
 def perguntas_sim_ou_nao(
     resposta,
-):  # gera o valor booleano nas perguntas para fazer o checkin das
-    # especificações da senha do usuário
+):
     if resposta == "sim":
         return True
     return False
 
 
-def valida_resposta(resposta):  # verifica se o usuário enviou uma resposta
-    # válida.
+# verifica se o usuário enviou uma resposta válida.
+def valida_resposta(resposta):
     if resposta not in ["sim", "não", "nao"]:
         print("Resposta inválida, tente novamente.")
         return False
     return True
 
 
-def gerador_senha(
-    tamanho, maiuscula, minuscula, numero, caractere_especial
-):  # gera a senha conforme as preferencias do usuário
+# gera a senha conforme as preferencias do usuário
+def gerador_senha(tamanho, maiuscula, minuscula, numero, caractere_especial):
     caracteres = ""
 
     if maiuscula:
@@ -88,10 +91,8 @@ def gerador_senha(
     if not caracteres:
         # caso o usuário não informe nenhum tipo de caractere
         return "Nenhum tipo de caractere selecionado!"
-
-    senha = "".join(
-        random.choice(caracteres) for _ in range(int(tamanho))
-    )  # gera a string com base nos dados acima
+    # gera a string com base nos dados acima
+    senha = "".join(random.choice(caracteres) for _ in range(int(tamanho)))
     return senha
 
 
