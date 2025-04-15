@@ -19,9 +19,10 @@ perguntas = [
     },
 ]
 
+# Minha solução
 acertos = 0
 print('Questionário - Matemática Fundamental 01')
-input('\nPressione Enter para continuar...')
+input('\nPressione Enter para começar')
 # código para limpar a tela
 os.system('cls' if os.name == 'nt' else 'clear')
 contador_perguntas = 1
