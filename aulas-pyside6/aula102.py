@@ -12,6 +12,7 @@ QMainWindows e centralWidget
 -> exec()
 '''
 
+from PySide6.QtCore import Slot
 from PySide6.QtWidgets import (
     QApplication,
     QPushButton,
@@ -25,8 +26,25 @@ window = QMainWindow()
 layout = QGridLayout()
 
 
+@Slot()
 def slot_example(status_bar):
-    status_bar.showMessage('O slot example foi executado.')
+    def inner():
+        status_bar.showMessage('O slot example foi executado.')
+
+    return inner
+
+
+@Slot()
+def segundo_slot(checked):
+    print('Está marcado?', checked)
+
+
+@Slot()
+def terceiro_slot(action):
+    def inner():
+        segundo_slot(action.isChecked())
+
+    return inner
 
 
 # Button
@@ -48,11 +66,14 @@ menu_bar = window.menuBar()
 primeiro_menu = menu_bar.addMenu('Primeiro Menu')
 primeira_acao = primeiro_menu.addAction('Primeira Ação')
 # Executa algo após a ação for acionada.
-primeira_acao.triggered.connect(lambda: slot_example(status_bar))
+primeira_acao.triggered.connect(slot_example(status_bar))
 
 segunda_acao = primeiro_menu.addAction('Segunda Ação')
 # .setCheckable faz com que a ação seja marcável
 segunda_acao.setCheckable(True)
+segunda_acao.toggled.connect(segundo_slot)
+segunda_acao.hovered.connect(terceiro_slot(segunda_acao))
+botao.clicked.connect(terceiro_slot(segunda_acao))
 
 layout.addWidget(botao, 1, 1, 1, 1)
 layout.addWidget(botao2, 1, 2, 1, 1)
