@@ -40,7 +40,7 @@ class MyWindow(QMainWindow):
         self.botao3 = self.criar_botao('Botão 3')
 
         self.grid_layout = QGridLayout()
-        self.grid_layout.addWidget(self.botao, 1, 1, 1, 1)
+        self.grid_layout.addWidget(self.botao1, 1, 1, 1, 1)
         self.grid_layout.addWidget(self.botao2, 1, 2, 1, 1)
         self.grid_layout.addWidget(self.botao3, 2, 1, 1, 2)
         self.central_widget.setLayout(self.grid_layout)
