@@ -18,7 +18,7 @@ for item in lista:
     elif isinstance(item, str):
         print('STRING')
         print(item.upper())
-    elif isinstance(item, int, float):
+    elif isinstance(item, int | float):
         print('numbers')
         print(item, item * 2)
     else:
