@@ -34,9 +34,8 @@ class MainWindow(QMainWindow, Ui_MainWindow):
         self.label_titulo.setText(f'Olá {line_text}!')
 
     """
-    eventFilter serve para realizar ações após algum(s) evento(s)
-    específico(s) como o KeyPress abaixo que ocorre após pressionar
-    algum botão.
+    O eventFilter serve para interceptar e tratar eventos antes que
+    cheguem ao widget de destino, como o KeyPress, MouseClick, entre outros.
     """
 
     def eventFilter(self, watched: QObject, event: QEvent) -> bool:
