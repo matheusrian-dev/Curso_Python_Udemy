@@ -1,0 +1,20 @@
+# Created by venv; see https://docs.python.org/3/library/venv.html
+aulas-sql/mysql_206
+
+# Ignorar ambiente virtual
+venv/
+.venv/
+env/
+ENV/
+
+# Ignorar cache do Python
+__pycache__/
+*.pyc
+
+# Ignorar pastas de container Docker
+docker_data/
+mysql_data/
+
+# Ignorar arquivos temporários e de sistema
+.DS_Store
+Thumbs.db

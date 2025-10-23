@@ -14,7 +14,7 @@ cursor.execute(f'DELETE FROM {TABLE_NAME}')
 # Zera a sequência de Id's
 cursor.execute(f'DELETE FROM sqlite_sequence WHERE name="{TABLE_NAME}"')
 connection.commit()
-
+# Criando a tabela
 cursor.execute(
     f'CREATE TABLE IF NOT EXISTS {TABLE_NAME}'
     '('
@@ -36,6 +36,10 @@ sql = f'INSERT INTO {TABLE_NAME} (name, weight) ' 'VALUES (?, ?)'
 # cursor.execute(sql, ['Geovanna', 63.2])
 cursor.executemany(sql, [['Geovanna', 63.2], ['Leah', 10.3], ['Aurora', 9.4]])
 connection.commit()
+
+cursor.execute(f'UPDATE {TABLE_NAME} ' 'SET name="Isabela" ' 'WHERE id = 1')
+connection.commit()
+
 
 cursor.close()
 connection.close()
