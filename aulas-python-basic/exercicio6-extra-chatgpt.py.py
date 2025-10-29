@@ -22,7 +22,7 @@ def remover_acentos_e_espacos(texto):
     return texto_sem_espacos
 
 
-# Minha solução sem noção
+# Minha solução
 # def eh_palindromo(palavra):
 #     palavra_formatada = remover_acentos_e_espacos(palavra)
 #     palavra_formatada = palavra_formatada.lower()
