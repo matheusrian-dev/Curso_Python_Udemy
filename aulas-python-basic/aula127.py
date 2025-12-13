@@ -23,6 +23,8 @@ def aumentar_porcentagem(valor, porcentagem):
     return round(valor * porcentagem, 2)
 
 
+# O partial serve para travar alguns argumentos de uma função, criando uma
+# nova função com eles já preenchidos.
 aumentar_dez_porcento = partial(aumentar_porcentagem, porcentagem=1.1)
 
 # novos_produtos = [
@@ -36,6 +38,9 @@ def muda_preco_de_produtos(produto):
     return {**produto, 'preco': aumentar_dez_porcento(produto['preco'])}
 
 
+# Map aplica uma função em cada iterável, devolvendo um novo iterável.
+# Observação: Ele não transforma nada por si só! Apenas aplica uma função
+# passada.
 novos_produtos = list(map(muda_preco_de_produtos, produtos))
 
 print_iter(produtos)
