@@ -6,7 +6,7 @@ from typing import cast
 import sys
 
 """
-Exemplo do comando para gerar o arquivo .py utilizando o arguivo
+Exemplo do comando para gerar o arquivo .py utilizando o arquivo
 .ui:
 pyside6-uic aulas-qthread/aula-106/workerui.ui -o
     aulas-qthread/aula-106/workerui.py
