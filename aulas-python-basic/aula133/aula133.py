@@ -23,9 +23,9 @@
 # em um sistema operacional Windows, que utiliza barra invertida, insira
 # uma barra extra para evitar erros!
 # caminho_arquivo = (
-#     'C:\\Users\\m1563301\\Documents\\curso_python_1\\aulas-python-basic'
+#     'C:\\Users\\user\\Files\\curso-python\\aulas-python-basic'
 # )
-caminho_arquivo = 'aula133.txt'
+caminho_arquivo = '.\\aulas-python-basic\\aula133\\aula133.txt'
 
 # arquivo = open(caminho, 'w')
 # #

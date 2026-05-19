@@ -1,5 +1,5 @@
-from functools import partial, reduce
-from types import GeneratorType
+# from functools import partial, reduce
+# from types import GeneratorType
 
 
 def separar_exercicio():
