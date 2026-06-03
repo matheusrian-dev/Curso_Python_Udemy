@@ -21,7 +21,15 @@ pessoa = {
     'nada': None,
 }
 
-with open('aula137.json', 'w') as arquivo:
+with open('aula137.json', 'w', encoding='utf8') as arquivo:
     # A função dump insere um objeto no arquivo
     # Insira ensure_ascii caso queira garantir acentuação concisa.
     json.dump(pessoa, arquivo, ensure_ascii=False)
+
+# with open('aula117.json', 'r', encoding='utf8') as arquivo:
+#     # A função load carrega os dados de um arquivo json para
+#     # um objeto.
+#     pessoa = json.load(arquivo)
+#     # print(pessoa)
+#     # print(type(pessoa))
+#     print(pessoa['nome'])
