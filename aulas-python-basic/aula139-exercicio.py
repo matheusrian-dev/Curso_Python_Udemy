@@ -48,7 +48,7 @@ def refazer_tarefa():
         print('--------------------------------------------------------')
 
 
-while repeat:
+while True:
     print('Lista de Tarefas')
     print('--------------------------------------------------------')
     print('Comandos aceitos:')
@@ -59,7 +59,7 @@ while repeat:
     print(' - Sair')
     print('--------------------------------------------------------')
     print('Insira seu comando ou tarefa:')
-    resposta_usuario = input().strip()
+    resposta_usuario = input().strip().lower()
     if not resposta_usuario:
         print('Digite alguma coisa antes de pressionar ENTER.')
         print()
@@ -67,8 +67,8 @@ while repeat:
     print()
     print('--------------------------------------------------------')
 
-    if resposta_usuario.lower() in lista_comandos:
-        resposta_usuario = resposta_usuario.lower()
+    if resposta_usuario in lista_comandos:
+        resposta_usuario = resposta_usuario
         if resposta_usuario == 'listar':
             listar_tarefas(lista_tarefas)
 
@@ -79,11 +79,11 @@ while repeat:
             refazer_tarefa()
 
         elif resposta_usuario == 'sair':
-            repeat = False
+            break
 
         else:
             os.system('cls' if os.name == 'nt' else 'clear')
 
     else:
-        lista_tarefas.append(resposta_usuario)
+        lista_tarefas.append(resposta_usuario.capitalize())
 print('Programa finalizado. Até a próxima!')

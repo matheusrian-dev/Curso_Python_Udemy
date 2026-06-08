@@ -1,0 +1,95 @@
+"""
+Exercício - Salvando a lista de tarefas em JSON
+Utilizando o código criado no exercício anterior
+crie uma base de dados para a lista de tarefas.
+"""
+
+import os
+import json
+
+lista_tarefas = []
+lista_desfazer = []
+repeat = True
+caminho_arquivo = '.\\aulas-python-basic\\aula141\\aula141.json'
+
+
+def listar_tarefas(lista):
+    print('Tarefas:')
+    for item in lista:
+        print(item)
+    print('--------------------------------------------------------')
+
+
+def desfazer_tarefa():
+    if not lista_tarefas:
+        print('Nenhuma ação para desfazer.')
+        print('--------------------------------------------------------')
+        return
+    ultimo_item = lista_tarefas.pop()
+    lista_desfazer.append(ultimo_item)
+    salvar_lista(caminho_arquivo, lista_tarefas)
+    print('Última ação desfeita.')
+    print('--------------------------------------------------------')
+
+
+def refazer_tarefa():
+    if not lista_desfazer:
+        print('Nenhuma ação para refazer.')
+        print('--------------------------------------------------------')
+        return
+    ultimo_item = lista_desfazer.pop()
+    lista_tarefas.append(ultimo_item)
+    salvar_lista(caminho_arquivo, lista_tarefas)
+    print('Ação refeita.')
+    print('--------------------------------------------------------')
+
+
+def adicionar_tarefa(tarefa):
+    lista_tarefas.append(tarefa)
+    salvar_lista(caminho_arquivo, lista_tarefas)
+    print(f'Tarefa {tarefa} adicionada à lista.')
+
+
+def salvar_lista(caminho, lista):
+    with open(caminho, 'w', encoding='utf-8') as arquivo:
+        json.dump(lista, arquivo, ensure_ascii=False, indent=4)
+
+
+try:
+    with open(caminho_arquivo, 'r', encoding='utf-8') as arquivo:
+        lista_tarefas = json.load(arquivo)
+except FileNotFoundError:
+    lista_tarefas = []
+except json.decoder.JSONDecodeError:
+    lista_tarefas = []
+
+while True:
+    print('Lista de Tarefas')
+    print('--------------------------------------------------------')
+    print('Comandos aceitos:')
+    print(' - Listar')
+    print(' - Desfazer')
+    print(' - Refazer')
+    print(' - Limpar')
+    print(' - Sair')
+    print('--------------------------------------------------------')
+    print('Insira seu comando ou tarefa:')
+    resposta_usuario = input().strip().lower()
+    if not resposta_usuario:
+        print('Digite alguma coisa antes de pressionar ENTER.')
+        print()
+        continue
+    if resposta_usuario == 'sair':
+        break
+    print()
+    print('--------------------------------------------------------')
+    comandos = {
+        'listar': lambda: listar_tarefas(lista_tarefas),
+        'desfazer': lambda: desfazer_tarefa(),
+        'refazer': lambda: refazer_tarefa(),
+        'limpar': lambda: os.system('cls' if os.name == 'nt' else 'clear'),
+        'adicionar': lambda: adicionar_tarefa(resposta_usuario.capitalize()),
+    }
+    comando = comandos.get(resposta_usuario, comandos['adicionar'])
+    comando()
+print('Programa finalizado. Até a próxima!')
