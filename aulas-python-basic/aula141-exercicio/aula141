@@ -4,64 +4,83 @@ Utilizando o código criado no exercício anterior
 crie uma base de dados para a lista de tarefas.
 """
 
-import os
 import json
-
-lista_tarefas = []
-lista_desfazer = []
-repeat = True
-caminho_arquivo = '.\\aulas-python-basic\\aula141\\aula141.json'
+import os
 
 
-def listar_tarefas(lista):
+def listar_tarefas(tarefas):
+    if not tarefas:
+        print('Nenhuma tarefa para listar')
+        print('--------------------------------------------------------')
+        return
+
     print('Tarefas:')
-    for item in lista:
-        print(item)
+    for tarefa in tarefas:
+        print(f'\t{tarefa}')
     print('--------------------------------------------------------')
 
 
-def desfazer_tarefa():
-    if not lista_tarefas:
-        print('Nenhuma ação para desfazer.')
+def desfazer_tarefa(tarefas, tarefas_refazer):
+    print()
+    if not tarefas:
+        print('Nenhuma tarefa para desfazer')
         print('--------------------------------------------------------')
         return
-    ultimo_item = lista_tarefas.pop()
-    lista_desfazer.append(ultimo_item)
-    salvar_lista(caminho_arquivo, lista_tarefas)
+
+    tarefa = tarefas.pop()
+    tarefas_refazer.append(tarefa)
     print('Última ação desfeita.')
     print('--------------------------------------------------------')
+    listar_tarefas(tarefas)
 
 
-def refazer_tarefa():
-    if not lista_desfazer:
-        print('Nenhuma ação para refazer.')
+def refazer_tarefa(tarefas, tarefas_refazer):
+    print()
+    if not tarefas_refazer:
+        print('Nenhuma tarefa para refazer')
         print('--------------------------------------------------------')
         return
-    ultimo_item = lista_desfazer.pop()
-    lista_tarefas.append(ultimo_item)
-    salvar_lista(caminho_arquivo, lista_tarefas)
+
+    tarefa = tarefas_refazer.pop()
+    tarefas.append(tarefa)
     print('Ação refeita.')
     print('--------------------------------------------------------')
+    listar_tarefas(tarefas)
 
 
-def adicionar_tarefa(tarefa):
-    lista_tarefas.append(tarefa)
-    salvar_lista(caminho_arquivo, lista_tarefas)
-    print(f'Tarefa {tarefa} adicionada à lista.')
+def adicionar_tarefa(tarefa, tarefas):
+    print()
+    tarefa = tarefa.strip()
+    if not tarefa:
+        print('Você não digitou uma tarefa.')
+        return
+    print(f'{tarefa=} adicionada na lista de tarefas.')
+    tarefas.append(tarefa)
+    print()
+    listar_tarefas(tarefas)
 
 
-def salvar_lista(caminho, lista):
-    with open(caminho, 'w', encoding='utf-8') as arquivo:
-        json.dump(lista, arquivo, ensure_ascii=False, indent=4)
+def ler_arquivo(tarefas, caminho_arquivo):
+    dados = []
+    try:
+        with open(caminho_arquivo, 'r', encoding='utf8') as arquivo:
+            dados = json.load(arquivo)
+    except FileNotFoundError:
+        print('Arquivo não existe')
+        salvar(tarefas, caminho_arquivo)
+    return dados
 
 
-try:
-    with open(caminho_arquivo, 'r', encoding='utf-8') as arquivo:
-        lista_tarefas = json.load(arquivo)
-except FileNotFoundError:
-    lista_tarefas = []
-except json.decoder.JSONDecodeError:
-    lista_tarefas = []
+def salvar(tarefas, caminho_arquivo):
+    dados = tarefas
+    with open(caminho_arquivo, 'w', encoding='utf8') as arquivo:
+        dados = json.dump(tarefas, arquivo, indent=2, ensure_ascii=False)
+    return dados
+
+
+CAMINHO_ARQUIVO = '.\\aulas-python-basic\\aula141-exercicio\\aula119.json'
+tarefas = ler_arquivo([], CAMINHO_ARQUIVO)
+tarefas_refazer = []
 
 while True:
     print('Lista de Tarefas')
@@ -75,21 +94,19 @@ while True:
     print('--------------------------------------------------------')
     print('Insira seu comando ou tarefa:')
     resposta_usuario = input().strip().lower()
-    if not resposta_usuario:
-        print('Digite alguma coisa antes de pressionar ENTER.')
-        print()
-        continue
     if resposta_usuario == 'sair':
         break
-    print()
-    print('--------------------------------------------------------')
+
     comandos = {
-        'listar': lambda: listar_tarefas(lista_tarefas),
-        'desfazer': lambda: desfazer_tarefa(),
-        'refazer': lambda: refazer_tarefa(),
-        'limpar': lambda: os.system('cls' if os.name == 'nt' else 'clear'),
-        'adicionar': lambda: adicionar_tarefa(resposta_usuario.capitalize()),
+        'listar': lambda: listar_tarefas(tarefas),
+        'desfazer': lambda: desfazer_tarefa(tarefas, tarefas_refazer),
+        'refazer': lambda: refazer_tarefa(tarefas, tarefas_refazer),
+        'clear': lambda: os.system('clear'),
+        'adicionar': lambda: adicionar_tarefa(
+            resposta_usuario.capitalize(), tarefas
+        ),
     }
     comando = comandos.get(resposta_usuario, comandos['adicionar'])
     comando()
+    salvar(tarefas, CAMINHO_ARQUIVO)
 print('Programa finalizado. Até a próxima!')
